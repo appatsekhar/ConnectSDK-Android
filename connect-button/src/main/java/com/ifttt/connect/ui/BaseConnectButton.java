@@ -164,17 +164,12 @@ final class BaseConnectButton extends LinearLayout implements LifecycleOwner {
         iftttLogo = ContextCompat.getDrawable(getContext(), R.drawable.ic_ifttt_logo_black);
         worksWithIfttt = new SpannableString(replaceKeyWithImage((TextView) helperTxt.getCurrentView(),
                 getResources().getString(R.string.ifttt_powered_by_ifttt), "IFTTT", iftttLogo));
+        int footerTextColor = ContextCompat.getColor(getContext(), R.color.ifttt_footer_text_color);
+        DrawableCompat.setTint(DrawableCompat.wrap(iftttLogo), footerTextColor);
         helperTxt.setCurrentText(worksWithIfttt);
 
         iconDragHelperCallback = new IconDragHelperCallback();
         viewDragHelper = buttonRoot.getViewDragHelperCallback(iconDragHelperCallback);
-
-        TextView currentHelperTextView = (TextView) helperTxt.getCurrentView();
-        TextView nextHelperTextView = (TextView) helperTxt.getNextView();
-        int semiTransparentWhite = ContextCompat.getColor(getContext(), R.color.ifttt_footer_text_color);
-        currentHelperTextView.setTextColor(semiTransparentWhite);
-        nextHelperTextView.setTextColor(semiTransparentWhite);
-        DrawableCompat.setTint(DrawableCompat.wrap(iftttLogo), semiTransparentWhite);
     }
 
     @Override

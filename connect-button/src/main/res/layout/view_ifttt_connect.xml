@@ -90,8 +90,8 @@
             android:gravity="center"
             android:lineSpacingExtra="@dimen/ifttt_helper_text_line_spacing"
             android:lines="1"
-            android:textColor="@android:color/black"
-            android:textColorLink="@android:color/black"
+            android:textColor="@color/ifttt_footer_text_color"
+            android:textColorLink="@color/ifttt_footer_text_color"
             android:textSize="@dimen/ifttt_helper_text_size"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -102,8 +102,8 @@
             android:gravity="center"
             android:lineSpacingExtra="@dimen/ifttt_helper_text_line_spacing"
             android:lines="1"
-            android:textColor="@android:color/black"
-            android:textColorLink="@android:color/black"
+            android:textColor="@color/ifttt_footer_text_color"
+            android:textColorLink="@color/ifttt_footer_text_color"
             android:textSize="@dimen/ifttt_helper_text_size"/>
 
     </TextSwitcher>
