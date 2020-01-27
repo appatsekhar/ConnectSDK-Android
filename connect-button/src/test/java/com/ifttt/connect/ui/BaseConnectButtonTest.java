@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import androidx.core.content.ContextCompat;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.ifttt.connect.Connection;
@@ -86,25 +85,6 @@ public final class BaseConnectButtonTest {
 
         TextSwitcher helperText = button.findViewById(R.id.ifttt_helper_text);
         assertThat(helperText.getCurrentView()).isInstanceOf(TextView.class);
-    }
-
-    @Test
-    public void testOnDarkBackground() {
-        TextSwitcher helperText = button.findViewById(R.id.ifttt_helper_text);
-        TextView currentHelperTextView = (TextView) helperText.getCurrentView();
-        TextView nextHelperTextView = (TextView) helperText.getNextView();
-
-        button.setOnDarkBackground(true);
-        assertThat(currentHelperTextView.getCurrentTextColor()).isEqualTo(
-                ContextCompat.getColor(button.getContext(), R.color.ifttt_footer_text_white));
-        assertThat(nextHelperTextView.getCurrentTextColor()).isEqualTo(
-                ContextCompat.getColor(button.getContext(), R.color.ifttt_footer_text_white));
-
-        button.setOnDarkBackground(false);
-        assertThat(currentHelperTextView.getCurrentTextColor()).isEqualTo(
-                ContextCompat.getColor(button.getContext(), R.color.ifttt_footer_text_black));
-        assertThat(nextHelperTextView.getCurrentTextColor()).isEqualTo(
-                ContextCompat.getColor(button.getContext(), R.color.ifttt_footer_text_black));
     }
 
     @Test

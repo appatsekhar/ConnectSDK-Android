@@ -85,7 +85,6 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.3"
             android:ellipsize="end"
             android:fontFamily="@font/avenir_next_ltpro_demi"
             android:gravity="center"
@@ -98,7 +97,6 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.3"
             android:ellipsize="end"
             android:fontFamily="@font/avenir_next_ltpro_demi"
             android:gravity="center"
