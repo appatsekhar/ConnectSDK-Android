@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
@@ -113,7 +114,8 @@ public final class AboutIftttActivity extends AppCompatActivity {
         if (hasConnected || ButtonUiHelper.isIftttInstalled(packageManager)) {
             googlePlayView.setVisibility(View.GONE);
 
-            Intent manageIntent = ButtonApiHelper.redirectToManage(this, connection.id);
+            Uri redirectUri = getIntent().getParcelableExtra(EXTRA_REDIRECT_URI);
+            Intent manageIntent = ButtonApiHelper.redirectToManage(this, connection.id, redirectUri);
             if (manageIntent != null && hasConnected) {
                 manageConnectionView.setVisibility(View.VISIBLE);
                 manageConnectionView.setOnClickListener(v -> startActivity(manageIntent));
@@ -134,8 +136,10 @@ public final class AboutIftttActivity extends AppCompatActivity {
     }
 
     private static final String EXTRA_CONNECTION = "extra_connection";
+    private static final String EXTRA_REDIRECT_URI = "extra_redirect_uri";
 
-    public static Intent intent(Context context, Connection connection) {
-        return new Intent(context, AboutIftttActivity.class).putExtra(EXTRA_CONNECTION, connection);
+    public static Intent intent(Context context, Connection connection, Uri uri) {
+        return new Intent(context, AboutIftttActivity.class).putExtra(EXTRA_CONNECTION, connection)
+                .putExtra(EXTRA_REDIRECT_URI, uri);
     }
 }

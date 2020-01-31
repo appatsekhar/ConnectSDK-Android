@@ -120,6 +120,7 @@ final class BaseConnectButton extends LinearLayout implements LifecycleOwner {
     private ConnectButtonState buttonState = Initial;
     private Connection connection;
     private Service worksWithService;
+    private Uri redirectUri;
 
     @Nullable private Application.ActivityLifecycleCallbacks activityLifecycleCallbacks;
     private ButtonApiHelper buttonApiHelper;
@@ -261,6 +262,7 @@ final class BaseConnectButton extends LinearLayout implements LifecycleOwner {
             CredentialsProvider credentialsProvider, @Nullable String inviteCode) {
         buttonApiHelper =
                 new ButtonApiHelper(connectionApiClient, redirectUri, inviteCode, credentialsProvider, getLifecycle());
+        this.redirectUri = redirectUri;
         emailEdt.setText(email);
     }
 
@@ -541,7 +543,7 @@ final class BaseConnectButton extends LinearLayout implements LifecycleOwner {
         StartIconDrawable.setPressListener(iconImg);
 
         helperTxt.setOnClickListener(
-                v -> getContext().startActivity(AboutIftttActivity.intent(getContext(), connection)));
+                v -> getContext().startActivity(AboutIftttActivity.intent(getContext(), connection, redirectUri)));
     }
 
     Connection getConnection() {
